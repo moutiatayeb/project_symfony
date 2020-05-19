@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg white fixed-top" style="background-color: rgba(0,43,88,0.8);">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <img src="https://www.auto-ecole.info/monsiteweb/images-defaut/galerie/volant.png" height="30"
+                 alt="logo auto ecole">
+        </a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" >
+                    <a class="nav-link waves-effect text-white"  href= "{{path('accueil')}}">ACCUEIL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect text-white"  href= "{{path('accueil')}}">SERVICE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect text-white" href= "{{path('accueil')}}" >CONTACT</a>
+                </li>
+            </ul>
+
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+                {% if not app.user %}
+                <li class="nav-item mr-2">
+                    <a href= "{{path('security_login')}}" class="btn btn-primary btn-rounded">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href= "{{path('security_registration')}}" class="btn btn-primary btn-rounded">Inscription</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href= "{{path('security_logout')}}" class="btn btn-primary btn-rounded">Déconnexion</a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>

@@ -1,0 +1,71 @@
+{% extends"base.html.twig" %}
+{% block body%}
+    <div class="container my-5 py-5 z-depth-1">
+        <!--Section: Content-->
+        <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
+
+
+            <!--Grid row-->
+            <div class="row d-flex justify-content-center">
+
+                <!--Grid column-->
+                <div class="col-md-6">
+
+                    <!-- Default form login -->
+{#                    <form class="text-center" action="{{ path('login') }}" method="post">#}
+                    <form class="text-center" action="{{ path('security_login') }}" method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messagekey | trans(error.messagedata, 'security')}}</div>
+                        {% endif %}
+                        <p class="h4 mb-4">Login</p>
+
+                        <!-- Email -->
+                        <input type="email" name="_username" id="email"
+                               value="{{ lastUsername }}" class="form-control mb-4" placeholder="E-mail">
+
+                        <!-- Password -->
+                        <input type="password" name="_password" id="password"
+                               class="form-control mb-4" placeholder="Mot de passe">
+
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <!-- Remember me -->
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                    <label class="custom-control-label" for="defaultLoginFormRemember">Souviens-toi de moi</label>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Forgot password -->
+                                <a href="">Mot de passe oublié?</a>
+                            </div>
+                        </div>
+                        <!-- Sign in button -->
+                        <button class="btn btn-block btn-primary btn-rounded my-4" type="submit">Connexion</button>
+
+                        <!-- Register -->
+                        <p>Pas un membre?
+                            <a href="">Inscrption ?</a>
+                        </p>
+
+                        <!-- Social login -->
+                        <p>ou connectez-vous avec:</p>
+
+                        <a href="#" class="mx-1" role="button"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="mx-1" role="button"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="mx-1" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+                    </form>
+                    <!-- Default form login -->
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+
+        </section>
+        <!--Section: Content-->
+    </div>
+{%endblock%}
