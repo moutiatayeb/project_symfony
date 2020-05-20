@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Inscription | Auto_Ecole{% endblock %}
-
 {% block body %}
+    {% include('site/navbar/navbar.html.twig') %}
+
     <div class="container my-5 py-5 z-depth-1">
 
 
@@ -17,28 +18,29 @@
                 <div class="col-md-6">
 
                     <!-- Default form register -->
-                    {{ form_start(form,{'attr':{'class':'text-center'}})}}
+                    {{ form_start(form,{'attr':{'class':'text-center'}}) }}
                     <p class="h4 mb-4">INSCRIPTION</p>
 
                     <div class="form-row mb-4">
                         <div class="col">
                             <!-- First name -->
-                            {{ form_widget(form.username,{'attr':{'placeholder':'Nom d\'utilisateur...','type':'text','class':'form-control'}})}}
+                            {{ form_widget(form.username,{'attr':{'placeholder':'Nom d\'utilisateur...','type':'text','class':'form-control'}}) }}
                         </div>
                         <div class="col">
                             <!-- Last name -->
-                            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Prenom">
+                            <input type="text" id="defaultRegisterFormLastName" class="form-control"
+                                   placeholder="Prenom">
                             {#                                {{ form_row(form.password,{'attr':{'placeholder':'Adresse email...','type':'text','class':'form-control'}})}}#}
                         </div>
                     </div>
 
                     <!-- E-mail -->
                     {#                        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">#}
-                    {{ form_widget(form.email,{'attr':{'placeholder':'Adresse email...','type':'email','class':'form-control mb-4'}})}}
+                    {{ form_widget(form.email,{'attr':{'placeholder':'Adresse email...','type':'email','class':'form-control mb-4'}}) }}
                     <!-- Password -->
-                    {{ form_widget(form.password,{'attr':{'placeholder':'Mot de passe...','type':'email','class':'form-control mb-4'}})}}
+                    {{ form_widget(form.password,{'attr':{'placeholder':'Mot de passe...','type':'email','class':'form-control mb-4'}}) }}
                     <!-- Password -->
-                    {{ form_widget(form.confirmPassword,{'attr':{'placeholder':'Répétez votre mot de passe...','type':'email','class':'form-control mb-4'}})}}
+                    {{ form_widget(form.confirmPassword,{'attr':{'placeholder':'Répétez votre mot de passe...','type':'email','class':'form-control mb-4'}}) }}
 
                     {#                        <!-- Phone number -->#}
                     {#                        <input type="number" id="defaultRegisterPhonePassword" class="form-control" placeholder="Numéro de téléphone"#}
@@ -89,4 +91,5 @@
     {#    {{ form_row(form.confirmPassword,{'label': 'Répétez votre mot de passe','attr':{'placeholder':'Répétez votre mot de passe...'}}) }}#}
     {#    <button type="submit" class="btn btn-success" >Inscription</button>#}
     {#    {{ form_end(form) }}#}
+    {% include('site/footer/footer.html.twig') %}
 {% endblock %}

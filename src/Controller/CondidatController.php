@@ -12,8 +12,6 @@ class CondidatController extends AbstractController
      */
     public function index()
     {
-        return $this->render('condidat/index.html.twig', [
-            'controller_name' => 'CondidatController',
-        ]);
+        return $this->render('condidat/index.html.twig');
     }
 }

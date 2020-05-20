@@ -35,8 +35,11 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_USER }
-#         - { path: ^/formateur, roles: ROLE_FORMATOR }
+         - { path: ^/condidat, roles: ROLE_CONDIDAT }
+         - { path: ^/formateur, roles: ROLE_FORMATOR }
     role_hierarchy:
-        ROLE_EDITOR: ROLE_USER
-        ROLE_ADMIN: ROLE_EDITOR
+        ROLE_ADMIN: ROLE_ADMIN
+        ROLE_FORMATOR: ROLE_ADMIN
+        ROLE_CONDIDAT: ROLE_ADMIN
+#        ROLE_CONDIDAT: ROLE_CONDIDAT
+#        ROLE_FORMATOR: ROLE_FORMATOR

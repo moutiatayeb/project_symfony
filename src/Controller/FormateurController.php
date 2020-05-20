@@ -12,8 +12,6 @@ class FormateurController extends AbstractController
      */
     public function index()
     {
-        return $this->render('formateur/index.html.twig', [
-            'controller_name' => 'FormateurController',
-        ]);
+        return $this->render('formateur/index.html.twig');
     }
 }
