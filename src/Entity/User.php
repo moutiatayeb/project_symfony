@@ -119,7 +119,7 @@ class User implements UserInterface
         $roles = $this->roles;
         // garantit que chaque utilisateur possède le rôle ROLE_USER
         // équvalent à array_push() qui ajoute un élément au tabeau
-        $roles[] = 'ROLE_CONDIDAT';
+        $roles[] = '';
         //array_unique élémine des doublons
         return array_unique($roles);
     }

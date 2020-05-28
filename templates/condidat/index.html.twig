@@ -1,1 +1,88 @@
-<h1>Condidat</h1>
+{% extends 'base.html.twig' %}
+{% block title%} Liste des Utilisateurs{% endblock %}
+
+{% block body %}
+    {% include('site/navbar/navbar.html.twig') %}
+    <div class="container my-5">
+
+
+        <!--Section: Content-->
+        <section class="dark-grey-text text-center" style="margin-top: 10%">
+            <!-- Section heading -->
+            <h3 class="font-weight-bold black-text mb-4 pb-2">Espace condidat</h3>
+            <hr class="w-header">
+            <!-- Section description -->
+            <p class="lead text-muted mx-auto mt-4 pt-2 mb-5">Tayeb Mouhamed Moutia</p>
+
+            <!--First row-->
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-4 col-lg-4">
+
+                    <!-- Card -->
+                    <a href= "{{path('admin_utilisateurs')}}" class="card hoverable">
+
+                        <!-- Card content -->
+                        <div class="card-body my-4">
+
+                            <p><i class="fas fa-tablet-alt fa-2x text-muted"></i></p>
+                            <h5 class="black-text mb-0">Passer un test</h5>
+
+                        </div>
+
+                    </a>
+                    <!-- Card -->
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-4 col-lg-4 mb-3">
+
+                    <!-- Card -->
+                    <a href="#!" class="card hoverable">
+
+                        <!-- Card content -->
+                        <div class="card-body my-4">
+
+                            <p><i class="fas fa-recycle fa-2x text-muted"></i></p>
+                            <h5 class="black-text mb-0">Historique</h5>
+
+                        </div>
+
+                    </a>
+                    <!-- Card -->
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-4 col-lg-4">
+
+                    <!-- Card -->
+                    <a href="#!" class="card hoverable">
+
+                        <!-- Card content -->
+                        <div class="card-body my-4">
+
+                            <p><i class="fas fa-cogs fa-2x text-muted"></i></p>
+                            <h5 class="black-text mb-0">Parametres de compte</h5>
+
+                        </div>
+
+                    </a>
+                    <!-- Card -->
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--First row-->
+
+        </section>
+
+
+    </div>
+    {% include('site/footer/footer.html.twig') %}
+{% endblock %}
