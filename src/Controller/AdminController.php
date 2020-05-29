@@ -50,6 +50,20 @@ class AdminController extends AbstractController
         return $this->render('admin/modifierUtilisateur.html.twig', ['formUser' => $form->createView()]);
     }
 
+    /**
+     * @Route("/compte", name="compte")
+     */
+    public function compte(UserRepository $user) {
+        return $this->render("admin/compte.html.twig");
+    }
+
+    /**
+     * @Route("/historique", name="historique")
+     */
+    public function historique(UserRepository $user) {
+        return $this->render("admin/historique.html.twig");
+    }
+
 //    /**
 //     * @Route("/utilisateurs/effacer/{id}", name="effacer_utilisateur")
 //     */

@@ -29,12 +29,12 @@
                 {% endif %}
                 {% if is_granted("ROLE_CONDIDAT") %}
                     <li class="nav-item" >
-                        <a class="nav-link waves-effect text-white"  href= "{{path('condidat')}}">ESPACE CONDIDAT</a>
+                        <a class="nav-link waves-effect text-white"  href= "{{path('condidat_index')}}">ESPACE CONDIDAT</a>
                     </li>
                 {% endif %}
                 {% if is_granted("ROLE_FORMATOR") %}
                     <li class="nav-item" >
-                        <a class="nav-link waves-effect text-white"  href= "{{path('formateur')}}">ESPACE FORMATEUR</a>
+                        <a class="nav-link waves-effect text-white"  href= "{{path('formateur_index')}}">ESPACE FORMATEUR</a>
                     </li>
                 {% endif %}
                 {% if (not is_granted("ROLE_ADMIN")) and (not is_granted("ROLE_CONDIDAT")) and (not is_granted("ROLE_FORMATOR")) %}

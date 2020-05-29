@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title%} Liste des Utilisateurs{% endblock %}
+{% block title%} Espace condidat{% endblock %}
 
 {% block body %}
     {% include('site/navbar/navbar.html.twig') %}
@@ -21,7 +21,7 @@
                 <div class="col-md-4 col-lg-4">
 
                     <!-- Card -->
-                    <a href= "{{path('admin_utilisateurs')}}" class="card hoverable">
+                    <a href= "{{path('condidat_test')}}" class="card hoverable">
 
                         <!-- Card content -->
                         <div class="card-body my-4">
@@ -38,10 +38,30 @@
                 <!--Grid column-->
 
                 <!--Grid column-->
+                <div class="col-md-4 col-lg-4">
+
+                    <!-- Card -->
+                    <a href= "{{path('condidat_compte')}}" class="card hoverable">
+
+                    <!-- Card content -->
+                    <div class="card-body my-4">
+
+                        <p><i class="fas fa-cogs fa-2x text-muted"></i></p>
+                        <h5 class="black-text mb-0">Parametres de compte</h5>
+
+                    </div>
+
+                    </a>
+                    <!-- Card -->
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
                 <div class="col-md-4 col-lg-4 mb-3">
 
                     <!-- Card -->
-                    <a href="#!" class="card hoverable">
+                    <a href= "{{path('condidat_historique')}}" class="card hoverable">
 
                         <!-- Card content -->
                         <div class="card-body my-4">
@@ -57,25 +77,7 @@
                 </div>
                 <!--Grid column-->
 
-                <!--Grid column-->
-                <div class="col-md-4 col-lg-4">
 
-                    <!-- Card -->
-                    <a href="#!" class="card hoverable">
-
-                        <!-- Card content -->
-                        <div class="card-body my-4">
-
-                            <p><i class="fas fa-cogs fa-2x text-muted"></i></p>
-                            <h5 class="black-text mb-0">Parametres de compte</h5>
-
-                        </div>
-
-                    </a>
-                    <!-- Card -->
-
-                </div>
-                <!--Grid column-->
 
             </div>
             <!--First row-->

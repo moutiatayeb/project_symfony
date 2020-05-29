@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title%} Liste des Utilisateurs{% endblock %}
+{% block title %} Créer un questionnaire{% endblock %}
 
 {% block body %}
     {% include('site/navbar/navbar.html.twig') %}
@@ -29,10 +29,10 @@
 
                 <!--Section: Content-->
                 <section class="dark-grey-text text-center" style="margin-top: 10%">
-                    <h3 class="font-weight-bold black-text mb-4 pb-2">Espace administrateur</h3>
+                    <h3 class="font-weight-bold black-text mb-4 pb-2">Espace formateur</h3>
                     <hr class="w-header">
                     <!-- Section description -->
-                    <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Liste des utilisateurs</p>
+                    <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Liste des quetions</p>
                     <!--First row-->
                     <div class="row">
                         <div class="card-body">
@@ -40,38 +40,32 @@
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>email</th>
-                                    <th>roles</th>
-                                    <th>Actions</th>
+                                    <th>Niveau</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for user in users %}
                                     <tr>
-                                        <td>{{ user.id }}</td>
-                                        <td>{{ user.email }}</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>02/02/2020</td>
+
                                         <td>
-                                            {% for role in user.roles %}
-                                                {% if role=="ROLE_ADMIN" %}
-                                                    Administrateur
-                                                {% elseif role=="ROLE_FORMATOR" %}
-                                                    Formateur
-                                                {% elseif role=="ROLE_CONDIDAT" %}
-                                                    Condidat
-                                                {% endif %}
-                                            {% endfor %}
-                                        </td>
-                                        <td>
-                                            <a href="{{ path('admin_modifier_utilisateur', {'id': user.id }) }}" class="btn btn-success" style="color: white">Modifier</a>
-                                            <a href="{{ path('admin_modifier_utilisateur', {'id': user.id }) }}" class="btn btn-danger" style="color: white">Effacer</a>
+                                            <a  class="btn btn-success" style="color: white">Modifier</a>
+                                            <a  class="btn btn-danger" style="color: white">Effacer</a>
                                         </td>
                                     </tr>
-                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <!--First row-->
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <a href= "{{path('formateur_cree')}}" class="btn btn-primary" style="color: white">Ajouter</a>
+                        </div>
+                    </div>
                 </section>
 
 
