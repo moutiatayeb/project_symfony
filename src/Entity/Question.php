@@ -41,6 +41,11 @@ class Question
      */
     private $dateRepense;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Cours", inversedBy="question")
+     */
+    private $cours;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Question
     public function setDateRepense(string $dateRepense): self
     {
         $this->dateRepense = $dateRepense;
+
+        return $this;
+    }
+
+    public function getCours(): ?Cours
+    {
+        return $this->cours;
+    }
+
+    public function setCours(?Cours $cours): self
+    {
+        $this->cours = $cours;
 
         return $this;
     }

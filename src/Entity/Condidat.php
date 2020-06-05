@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +47,22 @@ class Condidat
      * @ORM\Column(type="string", length=255)
      */
     private $dateCreation;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Formateur", mappedBy="condidat")
+     */
+    private $formateurs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Cours", mappedBy="condidat")
+     */
+    private $cours;
+
+    public function __construct()
+    {
+        $this->formateurs = new ArrayCollection();
+        $this->cours = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +137,65 @@ class Condidat
     public function setDateCreation(string $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formateur[]
+     */
+    public function getFormateurs(): Collection
+    {
+        return $this->formateurs;
+    }
+
+    public function addFormateur(Formateur $formateur): self
+    {
+        if (!$this->formateurs->contains($formateur)) {
+            $this->formateurs[] = $formateur;
+            $formateur->addCondidat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormateur(Formateur $formateur): self
+    {
+        if ($this->formateurs->contains($formateur)) {
+            $this->formateurs->removeElement($formateur);
+            $formateur->removeCondidat($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Cours[]
+     */
+    public function getCours(): Collection
+    {
+        return $this->cours;
+    }
+
+    public function addCour(Cours $cour): self
+    {
+        if (!$this->cours->contains($cour)) {
+            $this->cours[] = $cour;
+            $cour->setCondidat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Cours $cour): self
+    {
+        if ($this->cours->contains($cour)) {
+            $this->cours->removeElement($cour);
+            // set the owning side to null (unless already changed)
+            if ($cour->getCondidat() === $this) {
+                $cour->setCondidat(null);
+            }
+        }
 
         return $this;
     }
