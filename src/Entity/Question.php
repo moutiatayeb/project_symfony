@@ -37,7 +37,6 @@ class Question
      * @ORM\Column(type="string", length=255)
      */
     private $choixC;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
