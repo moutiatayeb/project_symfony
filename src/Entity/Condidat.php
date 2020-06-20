@@ -49,18 +49,19 @@ class Condidat
     private $dateCreation;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Formateur", mappedBy="condidat")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Formateur", mappedBy="inscription")
      */
-    private $formateurs;
+    private $inscription;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Cours", mappedBy="condidat")
      */
     private $cours;
 
+
     public function __construct()
     {
-        $this->formateurs = new ArrayCollection();
+        $this->inscription = new ArrayCollection();
         $this->cours = new ArrayCollection();
     }
 
@@ -137,34 +138,6 @@ class Condidat
     public function setDateCreation(string $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Formateur[]
-     */
-    public function getFormateurs(): Collection
-    {
-        return $this->formateurs;
-    }
-
-    public function addFormateur(Formateur $formateur): self
-    {
-        if (!$this->formateurs->contains($formateur)) {
-            $this->formateurs[] = $formateur;
-            $formateur->addCondidat($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFormateur(Formateur $formateur): self
-    {
-        if ($this->formateurs->contains($formateur)) {
-            $this->formateurs->removeElement($formateur);
-            $formateur->removeCondidat($this);
-        }
 
         return $this;
     }

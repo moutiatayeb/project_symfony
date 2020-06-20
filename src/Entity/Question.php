@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,6 +17,11 @@ class Question
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $question;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -45,6 +52,13 @@ class Question
      * @ORM\ManyToOne(targetEntity="App\Entity\Cours", inversedBy="question")
      */
     private $cours;
+
+
+
+    public function __construct()
+    {
+    }
+
 
     public function getId(): ?int
     {
@@ -107,6 +121,18 @@ class Question
     public function setDateRepense(string $dateRepense): self
     {
         $this->dateRepense = $dateRepense;
+
+        return $this;
+    }
+
+    public function getQuestion(): ?string
+    {
+        return $this->question;
+    }
+
+    public function setQuestion(string $question): self
+    {
+        $this->question = $question;
 
         return $this;
     }

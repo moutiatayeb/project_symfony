@@ -54,6 +54,11 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Cours", inversedBy="user")
+     */
+    private $cours;
+
 
     /**
      * @return mixed
@@ -134,4 +139,16 @@ class User implements UserInterface
     public function eraseCredentials() {}
 
     public function getSalt() {}
+
+    public function getCours(): ?Cours
+    {
+        return $this->cours;
+    }
+
+    public function setCours(?Cours $cours): self
+    {
+        $this->cours = $cours;
+
+        return $this;
+    }
 }

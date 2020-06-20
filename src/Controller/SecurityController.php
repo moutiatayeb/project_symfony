@@ -27,7 +27,7 @@ class SecurityController extends AbstractController
             //cryptage password
             $hash = $encoder->encodePassword($user,$user->getPassword());
             $user->setPassword($hash);
-
+            $user->setRoles(["ROLE_CONDIDAT"]);
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('security_login');

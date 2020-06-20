@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FormateurRepository")
  */
-class Formateur
+class Formateur extends User
 {
     /**
      * @ORM\Id()
@@ -29,19 +29,20 @@ class Formateur
     private $prenom;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Condidat", inversedBy="inscription")
+     */
+    private $inscription;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Cours", mappedBy="formateur")
      */
     private $cours;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Condidat", inversedBy="formateurs")
-     */
-    private $condidat;
 
     public function __construct()
     {
+        $this->inscription = new ArrayCollection();
         $this->cours = new ArrayCollection();
-        $this->condidat = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -74,6 +75,32 @@ class Formateur
     }
 
     /**
+     * @return Collection|Condidat[]
+     */
+    public function getInscription(): Collection
+    {
+        return $this->inscription;
+    }
+
+    public function addInscription(Condidat $inscription): self
+    {
+        if (!$this->inscription->contains($inscription)) {
+            $this->inscription[] = $inscription;
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Condidat $inscription): self
+    {
+        if ($this->inscription->contains($inscription)) {
+            $this->inscription->removeElement($inscription);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection|Cours[]
      */
     public function getCours(): Collection
@@ -99,32 +126,6 @@ class Formateur
             if ($cour->getFormateur() === $this) {
                 $cour->setFormateur(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Condidat[]
-     */
-    public function getCondidat(): Collection
-    {
-        return $this->condidat;
-    }
-
-    public function addCondidat(Condidat $condidat): self
-    {
-        if (!$this->condidat->contains($condidat)) {
-            $this->condidat[] = $condidat;
-        }
-
-        return $this;
-    }
-
-    public function removeCondidat(Condidat $condidat): self
-    {
-        if ($this->condidat->contains($condidat)) {
-            $this->condidat->removeElement($condidat);
         }
 
         return $this;
