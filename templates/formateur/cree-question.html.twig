@@ -3,22 +3,26 @@
 
 {% block body %}
     {% include('site/navbar/navbar.html.twig') %}
-    <div class="container" style="margin-top: 5%" >
+    <div class="container" style="margin-top: 5%">
         <section>
 
             <style>
                 .card-list li.page-item {
                     height: 36px;
                 }
+
                 .card-list .form-check-input[type="checkbox"] + label:before, .form-check-input[type="checkbox"]:not(.filled-in) + label:after, label.btn input[type="checkbox"] + label:before, label.btn input[type="checkbox"]:not(.filled-in) + label:after {
                     margin-top: 0;
                 }
+
                 .card-list .form-check-input[type="checkbox"] + label, label.btn input[type="checkbox"] + label {
                     height: 15px;
                 }
+
                 .card-list .form-check {
                     height: 0;
                 }
+
                 .card-list .badge {
                     height: 18px;
                     margin-top: 3px;
@@ -34,15 +38,19 @@
                     <div class="row">
                         <div class="card-body">
                             {{ form_start(form) }}
-                            {{ form_widget(form) }}
-                            <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+                            {{ form_widget(form.question,{'attr':{'placeholder':'question...','type':'text','class':'form-control mb-4'}}) }}
+                            {{ form_widget(form.choixA,{'attr':{'placeholder':'choixA...','type':'text','class':'form-control mb-4'}}) }}
+                            {{ form_widget(form.choixB,{'attr':{'placeholder':'choixA...','type':'text','class':'form-control mb-4'}}) }}
+                            {{ form_widget(form.choixC,{'attr':{'placeholder':'choixA...','type':'text','class':'form-control mb-4'}}) }}
+                            {{ form_widget(form.repense,{'attr':{'placeholder':'repense...','type':'text','class':'form-control mb-4'}}) }}
+                            <div class="row">
+                                <div class="col-12 text-left">
+                                    <a href="{{ path('formateur_listequestions') }}" class="btn btn-primary"
+                                       style="color: white">< Retour</a>
+                                    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+                                </div>
+                            </div>
                             {{ form_end(form) }}
-                        </div>
-                    </div>
-                    <!--First row-->
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <a href="{{ path('formateur_listequestions') }}" class="btn btn-primary" style="color: white">< Retour</a>
                         </div>
                     </div>
                 </section>

@@ -29,20 +29,18 @@
 
                 <!--Section: Content-->
                 <section class="dark-grey-text text-center" style="margin-top: 10%">
-                    <h3 class="font-weight-bold black-text mb-4 pb-2">Espace administrateur</h3>
-                    <hr class="w-header">
-                    <!-- Section description -->
-                    <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Liste des utilisateurs</p>
+                    <h3 class="font-weight-bold black-text mb-4 pb-2">Liste des utilisateurs</h3>
                     <!--First row-->
                     <div class="row">
                         <div class="card-body">
-                            <table id="users" class="table table-striped">
+                            <table class="table">
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>email</th>
-                                    <th>roles</th>
-                                    <th>Actions</th>
+                                    <th>Email</th>
+                                    <th>Username</th>
+                                    <th>Roles</th>
+                                    <th>actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -50,21 +48,15 @@
                                     <tr>
                                         <td>{{ user.id }}</td>
                                         <td>{{ user.email }}</td>
+                                        <td>{{ user.username }}</td>
+                                        <td>{{ user.roles[0] ? user.roles[0]|json_encode : '' }}</td>
                                         <td>
-                                            {% for role in user.roles %}
-                                                {% if role=="ROLE_ADMIN" %}
-                                                    Administrateur
-                                                {% elseif role=="ROLE_FORMATOR" %}
-                                                    Formateur
-                                                {% elseif role=="ROLE_CONDIDAT" %}
-                                                    Condidat
-                                                {% endif %}
-                                            {% endfor %}
+                                            <a class="btn btn-success" href="{{ path('admin_modificationutilisateur', {'id': user.id}) }}">Modifier</a>
                                         </td>
-                                        <td>
-                                            <a href="{{ path('admin_modifier_utilisateur', {'id': user.id }) }}" class="btn btn-success" style="color: white">Modifier</a>
-                                            <a href="{{ path('admin_modifier_utilisateur', {'id': user.id }) }}" class="btn btn-danger" style="color: white">Effacer</a>
-                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6">aucun utilisateur</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

@@ -36,6 +36,7 @@ class Cours
 
     public function __construct()
     {
+        $this->dateCreationCours= "2020-03-24 17:45:12";
     }
 
     /**

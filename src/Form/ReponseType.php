@@ -13,7 +13,6 @@ class ReponseType extends AbstractType
     {
         $builder
             ->add('reponse_user')
-            ->add('date')
         ;
     }
 

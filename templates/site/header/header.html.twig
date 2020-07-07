@@ -22,7 +22,7 @@
                         <h1 class="mb-4"><span class="text-warning">Auto Ecole</span><br><span class="cyan-text"> formation en ligne gratuite</span></h1>
                         <p class="mb-4 pb-2 dark-grey-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam vitae, culpa qui officia deserunt laborum fuga similique mollit id quos aperiam proident non ut rerum debitis.</p>
                         {% if is_granted("ROLE_CONDIDAT") %}
-                        <a type="button" class="btn btn-primary btn-rounded btn-md ml-md-0" href= "{{path('condidat_test')}}">Commencer</a>
+                        <a type="button" class="btn btn-primary btn-rounded btn-md ml-md-0" href= "{{path('condidat_listequestions')}}">Commencer</a>
                         {% endif %}
                     </div>
                     <!--Grid column-->

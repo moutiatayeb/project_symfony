@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Cours;
+use App\Entity\Reponse;
+use App\Form\ReponseType;
 use App\Repository\CoursRepository;
+use App\Repository\QuestionRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 /**
@@ -63,5 +67,35 @@ class CondidatController extends AbstractController
         return $this->render('condidat/detail-cours.html.twig', [
             'cour' => $cour,
         ]);
+    }
+    /**
+     * @Route("question/test/reponse", name="reponse", methods={"GET","POST"})
+     */
+    public function setReponse(Request $request): Response
+    {
+        $reponse = new Reponse();
+        $form = $this->createForm(ReponseType::class, $reponse);
+        $form->handleRequest($request);
+        dd($form);
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->persist($reponse);
+//            $entityManager->flush();
+//
+//            return $this->redirectToRoute('condidat_index');
+//        }
+//
+//        return $this->render('condidat/resultat.html.twig', [
+//            'reponse' => $reponse,
+//            'form' => $form->createView()]);
+    }
+
+    /**
+     * @Route("/test/qestion", name="listequestions", methods={"GET"})
+     */
+    public function listeQuestions(QuestionRepository $questionRepository): Response
+    {
+        return $this->render('condidat/test.html.twig', [
+            'questions' => $questionRepository->findAll()]);
     }
 }

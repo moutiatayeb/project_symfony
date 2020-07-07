@@ -43,6 +43,7 @@
                                 <th>Repense</th>
                                 <th>DateRepense</th>
                                 <th>actions</th>
+                                <th>Effacer</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -57,7 +58,15 @@
                                     <td>{{ question.dateRepense }}</td>
                                     <td>
                                         <a class="btn btn-success" href="{{ path('formateur_affichagequestion', {'id': question.id}) }}">Afficher </a>
-                                        <a class="btn btn-danger" href="{{ path('formateur_modificationquestion', {'id': question.id}) }}">Modifier</a>
+                                        <a class="btn btn-primary" href="{{ path('formateur_modificationquestion', {'id': question.id}) }}">Modifier</a>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="{{ path('formateur_effacerquestion', {'id': question.id}) }}"
+                                              onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ question.id) }}">
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             {% else %}

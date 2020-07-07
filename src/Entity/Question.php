@@ -50,6 +50,7 @@ class Question
 
     public function __construct()
     {
+        $this->dateRepense= "2020-03-24 17:45:12";
     }
 
 

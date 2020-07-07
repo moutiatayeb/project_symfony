@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title%} Espace condidat{% endblock %}
+
+{% block body %}
+    {% include('site/navbar/navbar.html.twig') %}
+    <div class="container my-5">
+
+
+        <!--Section: Content-->
+        <section class="dark-grey-text text-center" style="margin-top: 10%">
+            <!-- Section heading -->
+            <h3 class="font-weight-bold black-text mb-4 pb-2">Resultat de test</h3>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <hr class="w-header my-4">
+                    <h1 style="color: green">Test avec succès</h1>
+                    <h1 style="color: black">100/100</h1>
+                    <hr class="w-header my-4">
+                </div>
+            </div>
+
+        </section>
+
+
+    </div>
+    {% include('site/footer/footer.html.twig') %}
+{% endblock %}

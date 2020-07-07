@@ -41,6 +41,7 @@
                                     <th>Url</th>
                                     <th>DateCreationCours</th>
                                     <th>actions</th>
+                                    <th>Effacer</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,7 +53,15 @@
                                         <td>{{ cour.dateCreationCours }}</td>
                                         <td>
                                             <a class="btn btn-success" href="{{ path('formateur_affichage', {'id': cour.id}) }}">Afficher</a>
-                                            <a class="btn btn-danger" href="{{ path('formateur_modification', {'id': cour.id}) }}">Modifier</a>
+                                            <a class="btn btn-primary" href="{{ path('formateur_modification', {'id': cour.id}) }}">Modifier</a>
+                                        </td>
+                                        <td>
+                                            <form method="post" action="{{ path('formateur_effacercours', {'id': cour.id}) }}"
+                                                  onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ cour.id) }}">
+                                                <button class="btn btn-danger">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 {% else %}

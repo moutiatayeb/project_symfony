@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReponseRepository")
@@ -30,6 +31,7 @@ class Reponse
 
     public function __construct()
     {
+        $this->date= "2020-03-24 17:45:12";
     }
 
     /**

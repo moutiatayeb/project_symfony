@@ -13,9 +13,7 @@ class CoursType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('url')
-            ->add('dateCreationCours')
-        ;
+            ->add('url');
     }
 
     public function configureOptions(OptionsResolver $resolver)

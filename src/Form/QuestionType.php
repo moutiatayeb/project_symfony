@@ -17,7 +17,6 @@ class QuestionType extends AbstractType
             ->add('choixB')
             ->add('choixC')
             ->add('repense')
-            ->add('dateRepense')
         ;
     }
 

@@ -51,6 +51,7 @@ class Condidat
 
     public function __construct()
     {
+        $this->dateCreation = "2020-03-24 17:45:12";
     }
 
     public function getId(): ?int
