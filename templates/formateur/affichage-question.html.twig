@@ -1,1 +1,75 @@
-affiche q
+{% extends 'base.html.twig' %}
+{% block title %} Affichage question{% endblock %}
+
+{% block body %}
+    {% include('site/navbar/navbar.html.twig') %}
+    <div class="container" style="margin-top: 5%" >
+        <section>
+
+            <style>
+                .card-list li.page-item {
+                    height: 36px;
+                }
+                .card-list .form-check-input[type="checkbox"] + label:before, .form-check-input[type="checkbox"]:not(.filled-in) + label:after, label.btn input[type="checkbox"] + label:before, label.btn input[type="checkbox"]:not(.filled-in) + label:after {
+                    margin-top: 0;
+                }
+                .card-list .form-check-input[type="checkbox"] + label, label.btn input[type="checkbox"] + label {
+                    height: 15px;
+                }
+                .card-list .form-check {
+                    height: 0;
+                }
+                .card-list .badge {
+                    height: 18px;
+                    margin-top: 3px;
+                }
+            </style>
+            <div class="container my-5">
+                <!--Section: Content-->
+                <section class="dark-grey-text text-center" style="margin-top: 7%">
+                    <h3 class="font-weight-bold black-text mb-4 pb-2">{{ question.question }}</h3>
+                    <!--First row-->
+                    <div class="row">
+                        <div class="card-body">
+
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>ChoixA</th>
+                                    <td>{{ question.choixA }}</td>
+                                </tr>
+                                <tr>
+                                    <th>ChoixB</th>
+                                    <td>{{ question.choixB }}</td>
+                                </tr>
+                                <tr>
+                                    <th>ChoixC</th>
+                                    <td>{{ question.choixC }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Repense</th>
+                                    <td>{{ question.repense }}</td>
+                                </tr>
+                                <tr>
+                                    <th>DateRepense</th>
+                                    <td>{{ question.dateRepense }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--First row-->
+                    <div class="row">
+                        <div class="col-4 text-left">
+                            <a href= "{{path('formateur_listequestions')}}" class="btn btn-primary" style="color: white">< Retour</a>
+                            <a href= "{{path('formateur_modificationquestion', {'id': question.id})}}" class="btn btn-success" style="color: white">Modifier</a>
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+        </section>
+    </div>
+    {% include('site/footer/footer.html.twig') %}
+{% endblock %}

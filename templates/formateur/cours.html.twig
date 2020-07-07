@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %} Créer un questionnaire{% endblock %}
+{% block title %}Liste des cours{% endblock %}
 
 {% block body %}
     {% include('site/navbar/navbar.html.twig') %}
@@ -29,10 +29,7 @@
 
                 <!--Section: Content-->
                 <section class="dark-grey-text text-center" style="margin-top: 10%">
-                    <h3 class="font-weight-bold black-text mb-4 pb-2">Espace formateur</h3>
-                    <hr class="w-header">
-                    <!-- Section description -->
-                    <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Liste des quetions</p>
+                    <h3 class="font-weight-bold black-text mb-4 pb-2">Cours</h3>
                     <!--First row-->
                     <div class="row">
                         <div class="card-body">
@@ -54,8 +51,8 @@
                                         <td>{{ cour.url }}</td>
                                         <td>{{ cour.dateCreationCours }}</td>
                                         <td>
-                                            <a href="{{ path('formateur_affichage', {'id': cour.id}) }}">show</a>
-                                            <a href="{{ path('formateur_modification', {'id': cour.id}) }}">edit</a>
+                                            <a class="btn btn-success" href="{{ path('formateur_affichage', {'id': cour.id}) }}">Afficher</a>
+                                            <a class="btn btn-danger" href="{{ path('formateur_modification', {'id': cour.id}) }}">Modifier</a>
                                         </td>
                                     </tr>
                                 {% else %}
@@ -69,7 +66,7 @@
                     </div>
                     <!--First row-->
                     <div class="row">
-                        <div class="col-12 text-right">
+                        <div class="col-12 text-left">
                             <a href= "{{path('formateur_ajout')}}" class="btn btn-primary" style="color: white">Ajouter</a>
                         </div>
                     </div>

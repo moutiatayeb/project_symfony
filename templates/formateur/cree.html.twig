@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %} Créer un questionnaire{% endblock %}
+{% block title %} Créer d'un cours{% endblock %}
 
 {% block body %}
     {% include('site/navbar/navbar.html.twig') %}
@@ -29,24 +29,20 @@
 
                 <!--Section: Content-->
                 <section class="dark-grey-text text-center" style="margin-top: 10%">
-                    <h3 class="font-weight-bold black-text mb-4 pb-2">Espace formateur</h3>
-                    <hr class="w-header">
-                    <!-- Section description -->
-                    <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Ceation de cours</p>
+                    <h3 class="font-weight-bold black-text mb-4 pb-2">Créer un cours</h3>
                     <!--First row-->
                     <div class="row">
                         <div class="card-body">
-
                             {{ form_start(form) }}
                             {{ form_widget(form) }}
-                            <button class="btn">{{ button_label|default('Ajouter') }}</button>
+                            <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
                             {{ form_end(form) }}
                         </div>
                     </div>
                     <!--First row-->
                     <div class="row">
                         <div class="col-12 text-left">
-                            <a href= "" class="btn btn-primary" style="color: white">< Retour</a>
+                            <a href="{{path('formateur_listecours')}}" class="btn btn-primary" style="color: white">< Retour</a>
                         </div>
                     </div>
                 </section>

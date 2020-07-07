@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %} Créer un questionnaire{% endblock %}
+{% block title %}Liste des question{% endblock %}
 
 {% block body %}
     {% include('site/navbar/navbar.html.twig') %}
@@ -29,10 +29,7 @@
 
                 <!--Section: Content-->
                 <section class="dark-grey-text text-center" style="margin-top: 10%">
-                    <h3 class="font-weight-bold black-text mb-4 pb-2">Espace formateur</h3>
-                    <hr class="w-header">
-                    <!-- Section description -->
-                    <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Liste des quetions</p>
+                    <h3 class="font-weight-bold black-text mb-4 pb-2">Questions</h3>
                     <!--First row-->
                     <div class="row">
                         <table class="table">
@@ -59,13 +56,13 @@
                                     <td>{{ question.repense }}</td>
                                     <td>{{ question.dateRepense }}</td>
                                     <td>
-                                        <a href="{{ path('formateur_affichagequestion', {'id': question.id}) }}">show</a>
-                                        <a href="{{ path('formateur_modificationquestion', {'id': question.id}) }}">edit</a>
+                                        <a class="btn btn-success" href="{{ path('formateur_affichagequestion', {'id': question.id}) }}">Afficher </a>
+                                        <a class="btn btn-danger" href="{{ path('formateur_modificationquestion', {'id': question.id}) }}">Modifier</a>
                                     </td>
                                 </tr>
                             {% else %}
                                 <tr>
-                                    <td colspan="8">no records found</td>
+                                    <td colspan="8">aucun questin</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -73,7 +70,7 @@
                     </div>
                     <!--First row-->
                     <div class="row">
-                        <div class="col-12 text-right">
+                        <div class="col-12 text-left">
                             <a href= "{{path('formateur_ajoutquestion')}}" class="btn btn-primary" style="color: white">Ajouter</a>
                         </div>
                     </div>
