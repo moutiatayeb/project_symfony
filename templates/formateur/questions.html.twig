@@ -35,42 +35,46 @@
                     <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Liste des quetions</p>
                     <!--First row-->
                     <div class="row">
-                        <div class="card-body">
-                            <table class="table">
-                                <thead>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Question</th>
+                                <th>ChoixA</th>
+                                <th>ChoixB</th>
+                                <th>ChoixC</th>
+                                <th>Repense</th>
+                                <th>DateRepense</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for question in questions %}
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Titre</th>
-                                    <th>Url</th>
-                                    <th>DateCreationCours</th>
-                                    <th>actions</th>
+                                    <td>{{ question.id }}</td>
+                                    <td>{{ question.question }}</td>
+                                    <td>{{ question.choixA }}</td>
+                                    <td>{{ question.choixB }}</td>
+                                    <td>{{ question.choixC }}</td>
+                                    <td>{{ question.repense }}</td>
+                                    <td>{{ question.dateRepense }}</td>
+                                    <td>
+                                        <a href="{{ path('formateur_affichagequestion', {'id': question.id}) }}">show</a>
+                                        <a href="{{ path('formateur_modificationquestion', {'id': question.id}) }}">edit</a>
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                {% for cour in cours %}
-                                    <tr>
-                                        <td>{{ cour.id }}</td>
-                                        <td>{{ cour.titre }}</td>
-                                        <td>{{ cour.url }}</td>
-                                        <td>{{ cour.dateCreationCours }}</td>
-                                        <td>
-                                            <a href="{{ path('formateur_affichage', {'id': cour.id}) }}">show</a>
-                                            <a href="{{ path('formateur_modification', {'id': cour.id}) }}">edit</a>
-                                        </td>
-                                    </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="5">no records found</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
+                            {% else %}
+                                <tr>
+                                    <td colspan="8">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                     <!--First row-->
                     <div class="row">
                         <div class="col-12 text-right">
-                            <a href= "{{path('formateur_ajout')}}" class="btn btn-primary" style="color: white">Ajouter</a>
+                            <a href= "{{path('formateur_ajoutquestion')}}" class="btn btn-primary" style="color: white">Ajouter</a>
                         </div>
                     </div>
                 </section>

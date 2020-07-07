@@ -32,45 +32,20 @@
                     <h3 class="font-weight-bold black-text mb-4 pb-2">Espace formateur</h3>
                     <hr class="w-header">
                     <!-- Section description -->
-                    <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Liste des quetions</p>
+                    <p class="lead text-muted mx-auto mt-2 pt-2 mb-2">Ceation de question</p>
                     <!--First row-->
                     <div class="row">
                         <div class="card-body">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Titre</th>
-                                    <th>Url</th>
-                                    <th>DateCreationCours</th>
-                                    <th>actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for cour in cours %}
-                                    <tr>
-                                        <td>{{ cour.id }}</td>
-                                        <td>{{ cour.titre }}</td>
-                                        <td>{{ cour.url }}</td>
-                                        <td>{{ cour.dateCreationCours }}</td>
-                                        <td>
-                                            <a href="{{ path('formateur_affichage', {'id': cour.id}) }}">show</a>
-                                            <a href="{{ path('formateur_modification', {'id': cour.id}) }}">edit</a>
-                                        </td>
-                                    </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="5">no records found</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            <button class="btn">{{ button_label|default('Ajouter') }}</button>
+                            {{ form_end(form) }}
                         </div>
                     </div>
                     <!--First row-->
                     <div class="row">
-                        <div class="col-12 text-right">
-                            <a href= "{{path('formateur_ajout')}}" class="btn btn-primary" style="color: white">Ajouter</a>
+                        <div class="col-12 text-left">
+                            <a href= "" class="btn btn-primary" style="color: white">< Retour</a>
                         </div>
                     </div>
                 </section>
