@@ -47,12 +47,6 @@ class Question
      */
     private $dateRepense;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Cours", inversedBy="question")
-     */
-    private $cours;
-
-
 
     public function __construct()
     {
@@ -132,18 +126,6 @@ class Question
     public function setQuestion(string $question): self
     {
         $this->question = $question;
-
-        return $this;
-    }
-
-    public function getCours(): ?Cours
-    {
-        return $this->cours;
-    }
-
-    public function setCours(?Cours $cours): self
-    {
-        $this->cours = $cours;
 
         return $this;
     }

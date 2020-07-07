@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -54,10 +56,10 @@ class User implements UserInterface
      */
     private $roles = [];
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Cours", inversedBy="user")
-     */
-    private $cours;
+    public function __construct()
+    {
+        $this->reponse = new ArrayCollection();
+    }
 
 
     /**
@@ -140,15 +142,4 @@ class User implements UserInterface
 
     public function getSalt() {}
 
-    public function getCours(): ?Cours
-    {
-        return $this->cours;
-    }
-
-    public function setCours(?Cours $cours): self
-    {
-        $this->cours = $cours;
-
-        return $this;
-    }
 }

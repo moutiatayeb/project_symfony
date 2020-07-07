@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+{% block title %} Questionnaire{% endblock %}
+
+{% block body %}
+    {% include('site/navbar/navbar.html.twig') %}
+    <div class="container z-depth-1 my-5 pt-5 pb-3 px-5">
+
+        <!-- Section -->
+        <section>
+
+            <style>
+                .fa-play:before {
+                    margin-left: .3rem;
+                }
+
+                /* Steps */
+                .step {
+                    list-style: none;
+                    margin: 0;
+                }
+
+                .step-element {
+                    display: flex;
+                    padding: 1rem 0;
+                }
+
+                .step-number {
+                    position: relative;
+                    width: 7rem;
+                    flex-shrink: 0;
+                    text-align: center;
+                }
+
+                .step-number .number {
+                    color: #bfc5ca;
+                    background-color: #eaeff4;
+                    font-size: 1.5rem;
+                }
+
+                .step-number .number {
+                    width: 48px;
+                    height: 48px;
+                    line-height: 48px;
+                }
+
+                .number {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 38px;
+                    border-radius: 10rem;
+                }
+
+                .step-number::before {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: 48px;
+                    bottom: -2rem;
+                    margin-left: -1px;
+                    border-left: 2px dashed #eaeff4;
+                }
+
+                .step .step-element:last-child .step-number::before {
+                    bottom: 1rem;
+                }
+            </style>
+
+            <!-- Modal -->
+            {#            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"#}
+            {#                 aria-hidden="true">#}
+            {#                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">#}
+            {#                    <div class="modal-content">#}
+            {#                        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">#}
+            {#                            <iframe id="player" class="embed-responsive-item"#}
+            {#                                    src="https://www.youtube.com/embed/7MUISDJ5ZZ4" frameborder="0"#}
+            {#                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+
+            <h3 class="font-weight-bold text-center dark-grey-text pb-1">Espace condidat</h3>
+            <hr class="w-header my-4">
+            <p class="lead text-center text-muted pt-2 mb-5">Liste cours</p>
+            <div class="container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Url</th>
+                        <th>DateCreationCours</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cour in cours %}
+                        <tr>
+                            <td>{{ cour.id }}</td>
+                            <td>{{ cour.titre }}</td>
+                            <td>{{ cour.url }}</td>
+                            <td>{{ cour.dateCreationCours }}</td>
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <td>
+                                    <a href="{{ path('cours_show', {'id': cour.id}) }}">show</a>
+                                    <a href="{{ path('cours_edit', {'id': cour.id}) }}">edit</a>
+                                </td>
+                            {% endif %}
+                            {% if is_granted("ROLE_CONDIDAT") %}
+                            <td>
+                                <a href="{{ path('condidat_detail', {'id': cour.id}) }}">show</a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">aucun cours</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a href="{{ path('cours_new') }}">Creation</a>
+                {% endif %}
+            </div>
+        </section>
+        <!-- Section -->
+
+    </div>
+    {% include('site/footer/footer.html.twig') %}
+{% endblock %}

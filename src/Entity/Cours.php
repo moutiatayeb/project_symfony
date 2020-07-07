@@ -26,32 +26,32 @@ class Cours
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $url;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $dateCreationCours;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Condidat", inversedBy="cours")
-     */
-    private $condidat;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Formateur", inversedBy="cours")
-     */
-    private $formateur;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="cours")
-     */
-    private $question;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="cours")
-     */
-    private $user;
 
     public function __construct()
     {
-        $this->question = new ArrayCollection();
-        $this->user = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param mixed $url
+     */
+    public function setUrl($url): void
+    {
+        $this->url = $url;
     }
 
     public function getId(): ?int
@@ -82,92 +82,4 @@ class Cours
 
         return $this;
     }
-
-    public function getCondidat(): ?Condidat
-    {
-        return $this->condidat;
-    }
-
-    public function setCondidat(?Condidat $condidat): self
-    {
-        $this->condidat = $condidat;
-
-        return $this;
-    }
-
-    public function getFormateur(): ?Formateur
-    {
-        return $this->formateur;
-    }
-
-    public function setFormateur(?Formateur $formateur): self
-    {
-        $this->formateur = $formateur;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Question[]
-     */
-    public function getQuestion(): Collection
-    {
-        return $this->question;
-    }
-
-    public function addQuestion(Question $question): self
-    {
-        if (!$this->question->contains($question)) {
-            $this->question[] = $question;
-            $question->setCours($this);
-        }
-
-        return $this;
-    }
-
-    public function removeQuestion(Question $question): self
-    {
-        if ($this->question->contains($question)) {
-            $this->question->removeElement($question);
-            // set the owning side to null (unless already changed)
-            if ($question->getCours() === $this) {
-                $question->setCours(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUser(): Collection
-    {
-        return $this->user;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-            $user->setCours($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
-            // set the owning side to null (unless already changed)
-            if ($user->getCours() === $this) {
-                $user->setCours(null);
-            }
-        }
-
-        return $this;
-    }
-
-
 }
