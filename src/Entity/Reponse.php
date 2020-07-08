@@ -24,10 +24,16 @@ class Reponse
      */
     private $reponse_user;
 
+
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $date;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $id_question;
 
     public function __construct()
     {
@@ -80,5 +86,17 @@ class Reponse
     public function setDate($date): void
     {
         $this->date = $date;
+    }
+
+    public function getIdQuestion(): ?string
+    {
+        return $this->id_question;
+    }
+
+    public function setIdQuestion(string $id_question): self
+    {
+        $this->id_question = $id_question;
+
+        return $this;
     }
 }

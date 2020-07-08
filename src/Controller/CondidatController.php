@@ -8,6 +8,7 @@ use App\Form\ReponseType;
 use App\Repository\CoursRepository;
 use App\Repository\QuestionRepository;
 use App\Repository\UserRepository;
+use App\service\ResultService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CondidatController extends AbstractController
 {
+
     /**
      * @Route("/", name="index")
      */
@@ -71,12 +73,12 @@ class CondidatController extends AbstractController
     /**
      * @Route("question/test/reponse", name="reponse", methods={"GET","POST"})
      */
-    public function setReponse(Request $request): Response
+    public function setReponse(Request $request,ResultService $resultService): Response
     {
         $reponse = new Reponse();
         $form = $this->createForm(ReponseType::class, $reponse);
         $form->handleRequest($request);
-        dd($form);
+        
 //        if ($form->isSubmitted() && $form->isValid()) {
 //            $entityManager = $this->getDoctrine()->getManager();
 //            $entityManager->persist($reponse);
@@ -85,9 +87,10 @@ class CondidatController extends AbstractController
 //            return $this->redirectToRoute('condidat_index');
 //        }
 //
-//        return $this->render('condidat/resultat.html.twig', [
-//            'reponse' => $reponse,
-//            'form' => $form->createView()]);
+        return $this->render('condidat/resultat.html.twig', [
+            'reponse' => $reponse,
+            'form' => $form->createView(),
+            'result'=>$resultService->CalculeResult(/*liste des reponses*/)]);
     }
 
     /**
